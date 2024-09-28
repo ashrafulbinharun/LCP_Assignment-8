@@ -15,9 +15,11 @@ class ProfileController extends Controller
     /**
      * Display the user's profile.
      */
-    public function index(Request $request): View
+    public function index(User $user)
     {
-        return view('profile.index');
+        $posts = $user->posts()->latest()->get();
+
+        return view('profile.index', compact('posts'));
     }
 
     /**

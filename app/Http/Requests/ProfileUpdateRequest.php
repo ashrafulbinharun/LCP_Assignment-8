@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
@@ -29,7 +28,7 @@ class ProfileUpdateRequest extends FormRequest
 
     protected function prepareForValidation()
     {
-        if (!$this->filled('password')) {
+        if (! $this->filled('password')) {
             // Removes the password field if not provided
             $this->request->remove('password');
         }

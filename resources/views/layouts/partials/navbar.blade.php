@@ -8,7 +8,6 @@
                     </a>
                 </div>
                 <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
-                    <!-- Current: "border-gray-800 text-gray-900 font-semibold", Default: "border-transparent text-gray-600 hover:border-gray-300 hover:text-gray-800" -->
                     <a href="#"
                         class="inline-flex items-center px-1 pt-1 text-sm font-semibold text-gray-900 border-b-2 border-gray-800">Discover</a>
                     <a href="#"
@@ -19,11 +18,10 @@
                 </div>
             </div>
             <div class="hidden gap-2 sm:ml-6 sm:flex sm:items-center">
-                <!-- This Button Should Be Hidden on Mobile Devices -->
-                <button type="button"
+                <a href="{{ route('posts.create') }}"
                     class="text-gray-900 hover:text-white border-2 border-gray-800 hover:bg-gray-900 focus:ring-2 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hidden md:block">
                     Create Post
-                </button>
+                </a>
 
                 <button type="button"
                     class="p-2 text-gray-800 bg-white rounded-full hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
@@ -54,8 +52,7 @@
                             id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                             <span class="sr-only">Open user menu</span>
                             <img class="w-8 h-8 rounded-full"
-                                src="https://avatars.githubusercontent.com/u/150423186?v=4"
-                                alt="Ahmed Shamim Hasan Shaon" />
+                                src="https://avatars.githubusercontent.com/u/150423186?v=4" alt="Ashraful Karim" />
                         </button>
                     </div>
 
