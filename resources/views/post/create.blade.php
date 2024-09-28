@@ -77,7 +77,5 @@
                 </div>
             </div>
         </form>
-        {{-- Barta Create Post Card  --}}
     </main>
-
 @endsection

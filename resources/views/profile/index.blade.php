@@ -13,9 +13,9 @@
             </div>
         @endif
 
+        {{-- Profile Info --}}
         <section
             class="flex flex-col items-center justify-center p-8 space-y-6 bg-white border-2 border-gray-800 rounded-xl">
-            {{-- Profile Info --}}
             <div class="flex flex-col items-center justify-center gap-4 text-center">
                 <div>
                     <h1 class="mb-2 font-bold md:text-2xl">{{ auth()->user()->name }}</h1>
@@ -142,6 +142,5 @@
                 </footer>
             </article>
         @endforeach
-        {{-- Barta Single Post Card --}}
     </main>
 @endsection

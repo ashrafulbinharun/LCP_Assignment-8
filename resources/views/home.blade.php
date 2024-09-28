@@ -4,7 +4,6 @@
 
 @section('content')
     <main class="container max-w-xl min-h-screen px-2 mx-auto mt-8 space-y-8 md:px-0">
-
         {{-- Aleart --}}
         @if (session('success'))
             <div class="flex items-center justify-center p-4 mb-4 text-sm font-medium text-green-800 border-2 border-green-300 rounded-lg bg-green-50"
@@ -81,8 +80,6 @@
                 </div>
             </div>
         </form>
-        {{-- Barta Create Post Card  --}}
-
 
         {{-- Barta Single Post Card --}}
         @foreach ($posts as $post)
@@ -208,6 +205,5 @@
                 </footer>
             </article>
         @endforeach
-        {{-- Barta Single Post Card --}}
     </main>
 @endsection

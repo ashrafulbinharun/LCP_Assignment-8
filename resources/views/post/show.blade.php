@@ -4,6 +4,7 @@
 
 @section('content')
     <main class="container max-w-xl min-h-screen px-2 mx-auto mt-8 space-y-8 md:px-0">
+        {{-- Barta Show Post Card  --}}
         <article class="px-4 py-5 mx-auto bg-white border-2 border-black rounded-lg shadow max-w-none sm:px-6">
             <header>
                 <div class="flex items-center justify-between">
