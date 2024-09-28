@@ -24,6 +24,11 @@ class PostController extends Controller
         return redirect()->intended()->with(['success' => 'Post created successfully']);
     }
 
+    public function show(Post $post)
+    {
+        return view('post.show', compact('post'));
+    }
+
     public function edit(Post $post)
     {
         Gate::authorize('update', $post);

@@ -40,12 +40,14 @@
         @foreach ($posts as $post)
             <article class="px-4 py-5 mx-auto bg-white border-2 border-black rounded-lg shadow max-w-none sm:px-6">
                 <header>
-                    <div class="flex justify-between">
+                    <div class="flex justify-between gap-4">
                         {{-- Content --}}
                         <div class="py-4 font-normal text-gray-700">
-                            <p>
-                                {{ $post['content'] }}
+                            <p class="mb-2">
+                                {{ str($post->content)->limit(200) }}
                             </p>
+                            <a href="{{ route('posts.show', $post) }}" class="text-xs text-gray-600 hover:underline">View
+                                Post</a>
                         </div>
 
                         {{-- Card Action Dropdown --}}
@@ -53,7 +55,7 @@
                             <div class="relative inline-block text-left">
                                 <div>
                                     <button @click="open = !open" type="button"
-                                        class="flex items-center p-2 -m-2 text-gray-400 rounded-full hover:text-gray-600"
+                                        class="flex items-center p-2 text-gray-400 rounded-full hover:text-gray-600"
                                         id="menu-0-button">
                                         <span class="sr-only">Open options</span>
                                         <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -75,7 +77,7 @@
                                         onsubmit="return confirm('Are you sure?')">
                                         @method('DELETE')
                                         @csrf
-                                        <button href="#"
+                                        <button
                                             class="block w-full px-4 py-2 text-sm text-gray-700 text-start hover:bg-gray-100"
                                             role="menuitem" tabindex="-1" id="user-menu-item-1">Delete</button>
                                     </form>

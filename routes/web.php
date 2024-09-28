@@ -9,7 +9,7 @@ Route::get('/', GlobalPostController::class)->name('home');
 
 Route::middleware('auth')->group(function () {
     Route::resource('/posts', PostController::class)
-        ->except(['index', 'show']);
+        ->except('index');
 
     Route::get('/profile/{user:username}', [ProfileController::class, 'index'])
         ->name('profile.index');

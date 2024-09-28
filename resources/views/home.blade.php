@@ -135,7 +135,7 @@
                                         onsubmit="return confirm('Are you sure?')">
                                         @method('DELETE')
                                         @csrf
-                                        <button href="#"
+                                        <button
                                             class="block w-full px-4 py-2 text-sm text-gray-700 text-start hover:bg-gray-100"
                                             role="menuitem" tabindex="-1" id="user-menu-item-1">Delete</button>
                                     </form>
@@ -148,13 +148,14 @@
 
                 {{-- Content --}}
                 <div class="py-4 font-normal text-gray-700">
-                    <p>
-                        {{ $post['content'] }}
+                    <p class="mb-2">
+                        {{ str($post->content)->limit(200) }}
                     </p>
+                    <a href="{{ route('posts.show', $post) }}" class="text-xs text-gray-600 hover:underline">View Post</a>
                 </div>
 
                 {{-- Post Details --}}
-                <div class="flex items-center gap-2 my-2 text-xs text-gray-500">
+                <div class="flex items-center gap-2 mb-2 text-xs text-gray-500">
                     <span class="">{{ $post->created_at->diffForHumans() }}</span>
                     <span class="">•</span>
                     <span>450 views</span>
@@ -166,7 +167,7 @@
                         <div class="flex gap-8 text-gray-600">
                             {{-- Heart Button --}}
                             <button type="button"
-                                class="flex items-center gap-2 p-2 -m-2 text-xs text-gray-600 rounded-full hover:text-gray-800">
+                                class="flex items-center gap-2 p-2 text-xs text-gray-600 rounded-full hover:text-gray-800">
                                 <span class="sr-only">Like</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="2" stroke="currentColor" class="w-5 h-5">
@@ -179,7 +180,7 @@
 
                             {{-- Comment Button --}}
                             <button type="button"
-                                class="flex items-center gap-2 p-2 -m-2 text-xs text-gray-600 rounded-full hover:text-gray-800">
+                                class="flex items-center gap-2 p-2 text-xs text-gray-600 rounded-full hover:text-gray-800">
                                 <span class="sr-only">Comment</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="2" stroke="currentColor" class="w-5 h-5">
@@ -194,7 +195,7 @@
                         {{-- Share Button --}}
                         <div>
                             <button type="button"
-                                class="flex items-center gap-2 p-2 -m-2 text-xs text-gray-600 rounded-full hover:text-gray-800">
+                                class="flex items-center gap-2 p-2 text-xs text-gray-600 rounded-full hover:text-gray-800">
                                 <span class="sr-only">Share</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
