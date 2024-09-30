@@ -40,23 +40,33 @@
         @foreach ($posts as $post)
             <article class="px-4 py-5 mx-auto bg-white border-2 border-black rounded-lg shadow max-w-none sm:px-6">
                 <header>
-                    <div class="flex justify-between gap-4">
-                        {{-- Content --}}
-                        <div class="py-4 font-normal text-gray-700">
-                            <p class="mb-2">
-                                {{ str($post->content)->limit(200) }}
-                            </p>
-                            <a href="{{ route('posts.show', $post) }}" class="text-xs text-gray-600 hover:underline">View
-                                Post</a>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            {{-- User Avatar --}}
+                            <div class="flex-shrink-0">
+                                <img class="w-8 h-8 rounded-full"
+                                    src="https://avatars.githubusercontent.com/u/150423186?v=4" alt="Ashraful Karim" />
+                            </div>
+
+                            {{-- User Info --}}
+                            <div class="flex flex-col flex-1 min-w-0 text-gray-900">
+                                <a href="#" class="font-semibold hover:underline line-clamp-1">
+                                    {{ $post->user->name }}
+                                </a>
+
+                                <a href="#" class="text-sm text-gray-500 hover:underline line-clamp-1">
+                                    {{ '@' . $post->user->username }}
+                                </a>
+                            </div>
                         </div>
 
                         {{-- Card Action Dropdown --}}
                         @if (auth()->check() && $post->isOwnedBy(auth()->user()))
-                            <div class="flex flex-shrink-0 mt-4" x-data="{ open: false }">
+                            <div class="flex self-center flex-shrink-0" x-data="{ open: false }">
                                 <div class="relative inline-block text-left">
                                     <div>
                                         <button @click="open = !open" type="button"
-                                            class="flex items-center p-2 text-gray-400 rounded-full hover:text-gray-600"
+                                            class="flex items-center p-2 -m-2 text-gray-400 rounded-full hover:text-gray-600"
                                             id="menu-0-button">
                                             <span class="sr-only">Open options</span>
                                             <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -88,6 +98,14 @@
                         @endif
                     </div>
                 </header>
+
+                {{-- Content --}}
+                <div class="py-4 font-normal text-gray-700">
+                    <p class="mb-2">
+                        {{ str($post->content)->limit(200) }}
+                    </p>
+                    <a href="{{ route('posts.show', $post) }}" class="text-xs text-gray-600 hover:underline">View Post</a>
+                </div>
 
                 {{-- Post Details --}}
                 <div class="flex items-center gap-2 my-2 text-xs text-gray-500">
