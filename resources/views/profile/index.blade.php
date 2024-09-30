@@ -51,40 +51,41 @@
                         </div>
 
                         {{-- Card Action Dropdown --}}
-                        <div class="flex flex-shrink-0 mt-4" x-data="{ open: false }">
-                            <div class="relative inline-block text-left">
-                                <div>
-                                    <button @click="open = !open" type="button"
-                                        class="flex items-center p-2 text-gray-400 rounded-full hover:text-gray-600"
-                                        id="menu-0-button">
-                                        <span class="sr-only">Open options</span>
-                                        <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                            <path
-                                                d="M10 3a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM10 8.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM11.5 15.5a1.5 1.5 0 10-3 0 1.5 1.5 0 003 0z">
-                                            </path>
-                                        </svg>
-                                    </button>
-                                </div>
-                                {{-- Dropdown menu  --}}
-                                <div x-show="open" @click.away="open = false"
-                                    class="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                                    role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button"
-                                    tabindex="-1">
-                                    <a href="{{ route('posts.edit', $post) }}"
-                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"
-                                        tabindex="-1" id="user-menu-item-0">Edit</a>
-                                    <form action="{{ route('posts.destroy', $post) }}" method="POST"
-                                        onsubmit="return confirm('Are you sure?')">
-                                        @method('DELETE')
-                                        @csrf
-                                        <button
-                                            class="block w-full px-4 py-2 text-sm text-gray-700 text-start hover:bg-gray-100"
-                                            role="menuitem" tabindex="-1" id="user-menu-item-1">Delete</button>
-                                    </form>
+                        @if (auth()->check() && $post->isOwnedBy(auth()->user()))
+                            <div class="flex flex-shrink-0 mt-4" x-data="{ open: false }">
+                                <div class="relative inline-block text-left">
+                                    <div>
+                                        <button @click="open = !open" type="button"
+                                            class="flex items-center p-2 text-gray-400 rounded-full hover:text-gray-600"
+                                            id="menu-0-button">
+                                            <span class="sr-only">Open options</span>
+                                            <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                <path
+                                                    d="M10 3a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM10 8.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM11.5 15.5a1.5 1.5 0 10-3 0 1.5 1.5 0 003 0z">
+                                                </path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    {{-- Dropdown menu  --}}
+                                    <div x-show="open" @click.away="open = false"
+                                        class="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                                        role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button"
+                                        tabindex="-1">
+                                        <a href="{{ route('posts.edit', $post) }}"
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"
+                                            tabindex="-1" id="user-menu-item-0">Edit</a>
+                                        <form action="{{ route('posts.destroy', $post) }}" method="POST"
+                                            onsubmit="return confirm('Are you sure?')">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button
+                                                class="block w-full px-4 py-2 text-sm text-gray-700 text-start hover:bg-gray-100"
+                                                role="menuitem" tabindex="-1" id="user-menu-item-1">Delete</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        {{-- Card Action Dropdown  --}}
+                        @endif
                     </div>
                 </header>
 

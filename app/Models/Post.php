@@ -16,6 +16,11 @@ class Post extends Model
         'content',
     ];
 
+    public function isOwnedBy(User $user): bool
+    {
+        return $this->user_id === $user->id;
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
