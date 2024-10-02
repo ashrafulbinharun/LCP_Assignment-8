@@ -106,7 +106,7 @@
                         </div>
 
                         {{-- Card Action Dropdown --}}
-                        @if (auth()->check() && $post->isOwnedBy(auth()->user()))
+                        @can('manage', $post)
                             <div class="flex self-center flex-shrink-0" x-data="{ open: false }">
                                 <div class="relative inline-block text-left">
                                     <div>
@@ -140,7 +140,7 @@
                                     </div>
                                 </div>
                             </div>
-                        @endif
+                        @endcan
                     </div>
                 </header>
 

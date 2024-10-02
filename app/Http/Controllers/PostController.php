@@ -31,14 +31,14 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        Gate::authorize('update', $post);
+        Gate::authorize('manage', $post);
 
         return view('post.edit', compact('post'));
     }
 
     public function update(UpdatePostRequest $request, Post $post)
     {
-        Gate::authorize('update', $post);
+        Gate::authorize('manage', $post);
 
         $post->update($request->validated());
 
@@ -47,7 +47,7 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
-        Gate::authorize('delete', $post);
+        Gate::authorize('manage', $post);
 
         $post->delete();
 
